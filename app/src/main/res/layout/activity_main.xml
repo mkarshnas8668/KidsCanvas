@@ -5,15 +5,65 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/back_ic"
     tools:context=".MainActivity">
 
-    <TextView
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_back_menu" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/back_btn_menu"
+            android:drawableRight="@drawable/ic_draw"
+            android:drawableTint="@color/dark_green"
+            android:fontFamily="@font/sans_fa_name_bold"
+            android:gravity="center"
+            android:minHeight="70dp"
+            android:paddingStart="15dp"
+            android:text="نقاشی"
+            android:textColor="@color/green"
+            android:textSize="60px" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/back_btn_menu"
+            android:drawableRight="@drawable/ic_color"
+            android:drawableTint="@color/dark_green"
+            android:fontFamily="@font/sans_fa_name_bold"
+            android:gravity="center"
+            android:minHeight="70dp"
+            android:paddingStart="15dp"
+            android:text="رنگ امیزی"
+            android:textColor="@color/green"
+            android:textSize="60px"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

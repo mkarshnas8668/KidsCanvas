@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- رنگ‌های پس‌زمینه -->
+    <color name="back_main">#FFB0E0E6</color> <!-- آبی آسمانی ملایم (پس‌زمینه اصلی) -->
+    <color name="back_secondary">#FFFFE066</color> <!-- زرد روشن (پس‌زمینه‌های ثانویه) -->
+    <color name="back_btn">#FFFFA500</color> <!-- نارنجی (پس‌زمینه دکمه‌ها) -->
+    <color name="back_txt">#FFFFFFFF</color> <!-- سفید (پس‌زمینه باکس‌های متنی) -->
+    <color name="back_ic">#FF40E0D0</color> <!-- فیروزه‌ای (پس‌زمینه آیکون‌ها) -->
+
+    <!-- رنگ‌های متن -->
+    <color name="fore_txt">#FF000000</color> <!-- مشکی (متن اصلی) -->
+    <color name="fore_txt_secondary">#FF505050</color> <!-- خاکستری تیره (متن فرعی) -->
+    <color name="fore_txt_highlight">#FFFF4500</color> <!-- نارنجی مایل به قرمز (متن‌های برجسته) -->
+
+    <!-- رنگ‌های دکمه‌ها -->
+    <color name="btn_primary">#FFFFA500</color> <!-- نارنجی (دکمه‌های اصلی) -->
+    <color name="btn_secondary">#FFFFD700</color> <!-- طلایی (دکمه‌های ثانویه) -->
+    <color name="btn_pressed">#FFCC5500</color> <!-- نارنجی تیره (دکمه‌های فشرده شده) -->
+    <color name="btn_disabled">#FFB0B0B0</color> <!-- خاکستری روشن (دکمه‌های غیرفعال) -->
+
+    <!-- رنگ‌های آیکون‌ها -->
+    <color name="fore_ic">#FF4B0082</color> <!-- نیلی (رنگ پیش‌فرض آیکون‌ها) -->
+    <color name="fore_ic_highlight">#FFFFC0CB</color> <!-- صورتی روشن (آیکون‌های برجسته) -->
+
+    <!-- رنگ‌های خط و حاشیه -->
+    <color name="border_primary">#FF228B22</color> <!-- سبز جنگلی (حاشیه‌ها) -->
+    <color name="border_secondary">#FF808080</color> <!-- خاکستری متوسط (حاشیه‌های نرم) -->
+
+    <!-- رنگ‌های خاص برای جلوه‌های بصری -->
+    <color name="special_highlight">#FFEE82EE</color> <!-- بنفش روشن (افکت‌های ویژه) -->
+    <color name="special_shadow">#FF8B4513</color> <!-- قهوه‌ای (سایه‌ها) -->
+    <color name="special_glow">#FFFFBF00</color> <!-- کهربایی (درخشندگی) -->
+
+    <!-- رنگ‌های اصلی -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="green">#FF00FF00</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="yellow">#FFFFFF00</color>
+    <color name="cyan">#FF00FFFF</color>
+    <color name="magenta">#FFFF00FF</color>
+
+    <!-- رنگ‌های ملایم -->
+    <color name="light_gray">#FFB0B0B0</color>
+    <color name="dark_gray">#FF505050</color>
+    <color name="light_red">#FFFF6666</color>
+    <color name="light_green">#FF80FF80</color>
+    <color name="light_blue">#FF80C8FF</color>
+    <color name="light_yellow">#FFFFE066</color>
+
+    <!-- رنگ‌های تیره -->
+    <color name="dark_red">#FF8B0000</color>
+    <color name="dark_green">#FF006400</color>
+    <color name="dark_blue">#FF00008B</color>
+    <color name="dark_yellow">#FF9B8A00</color>
+    <color name="dark_cyan">#FF008B8B</color>
+    <color name="dark_magenta">#FF8B008B</color>
+
+    <!-- رنگ‌های گرم -->
+    <color name="orange">#FFFFA500</color>
+    <color name="light_orange">#FFFFC266</color>
+    <color name="dark_orange">#FFCC5500</color>
+    <color name="brown">#FF8B4513</color>
+
+    <!-- رنگ‌های سرد -->
+    <color name="sky_blue">#FF87CEEB</color>
+    <color name="light_sky_blue">#FFB0E0E6</color>
+    <color name="dark_sky_blue">#FF00BFFF</color>
+    <color name="turquoise">#FF40E0D0</color>
+
+    <!-- رنگ‌های خاص -->
+    <color name="pink">#FFFFC0CB</color>
+    <color name="lavender">#FFE6E6FA</color>
+    <color name="peach">#FFFFDAB9</color>
+    <color name="gold">#FFFFD700</color>
+    <color name="silver">#FFC0C0C0</color>
+    <color name="plum">#FF8E4585</color>
+    <color name="orchid">#FFDA70D6</color>
+    <color name="indigo">#FF4B0082</color>
+    <color name="violet">#FFEE82EE</color>
+
+    <!-- رنگ‌های طبیعی -->
+    <color name="forest_green">#FF228B22</color>
+    <color name="sea_green">#FF2E8B57</color>
+    <color name="olive">#FF808000</color>
+    <color name="chocolate">#FFD2691E</color>
+    <color name="sand">#FFC2B280</color>
+
+    <!-- رنگ‌های دیگر -->
+    <color name="lime">#FF00FF00</color>
+    <color name="navy">#FF000080</color>
+    <color name="teal">#FF008080</color>
+    <color name="pearl">#FFFCF5D6</color>
+    <color name="amber">#FFFFBF00</color>
+
 </resources>
