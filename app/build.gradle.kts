@@ -49,4 +49,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+//    ........... My ..........................
+    implementation("com.github.yukuku:ambilwarna:2.0.1")
+
 }

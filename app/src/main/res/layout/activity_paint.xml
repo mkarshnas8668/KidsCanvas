@@ -5,6 +5,76 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back_main"
     tools:context=".PaintActivity">
+
+    <!-- FrameLayout to handle zooming and scrolling -->
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- ColoringView inside the FrameLayout -->
+        <com.mkarshnas6.karenstudio.kidscanvas.DrawingView
+            android:id="@+id/coloring_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/back_view_paintin"
+            android:scrollbarStyle="insideInset" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/back_view_paintin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_select_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:src="@drawable/ic_color" />
+
+        <TextView
+            android:id="@+id/btn_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#0000FF"
+            android:gravity="center"
+            android:text="آبی"
+            android:textColor="@color/white"
+            android:textSize="60px" />
+
+        <TextView
+            android:id="@+id/btn_green"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#00FF00"
+            android:gravity="center"
+            android:text="سبز"
+            android:textColor="@color/white"
+            android:textSize="60px" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

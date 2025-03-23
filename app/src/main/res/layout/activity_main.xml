@@ -33,6 +33,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/btn_painting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -49,6 +50,7 @@
             android:textSize="60px" />
 
         <TextView
+            android:id="@+id/btn_coloring"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
