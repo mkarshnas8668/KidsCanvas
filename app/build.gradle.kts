@@ -7,6 +7,10 @@ android {
     namespace = "com.mkarshnas6.karenstudio.kidscanvas"
     compileSdk = 35
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.mkarshnas6.karenstudio.kidscanvas"
         minSdk = 26
