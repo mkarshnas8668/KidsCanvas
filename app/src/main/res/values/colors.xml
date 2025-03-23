@@ -49,6 +49,7 @@
     <color name="light_green">#FF80FF80</color>
     <color name="light_blue">#FF80C8FF</color>
     <color name="light_yellow">#FFFFE066</color>
+    <color name="back_splash_screen">#F1F1F1</color>
 
     <!-- رنگ‌های تیره -->
     <color name="dark_red">#FF8B0000</color>

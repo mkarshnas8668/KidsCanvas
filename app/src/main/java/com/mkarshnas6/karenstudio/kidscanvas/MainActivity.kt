@@ -3,6 +3,7 @@ package com.mkarshnas6.karenstudio.kidscanvas
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.mkarshnas6.karenstudio.kidscanvas.databinding.ActivityMainBinding
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        
+        window.statusBarColor = ContextCompat.getColor(this, R.color.dark_green)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.dark_green)
+
 
     }
 }
