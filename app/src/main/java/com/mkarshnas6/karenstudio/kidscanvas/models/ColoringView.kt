@@ -25,41 +25,35 @@ class ColoringView(context: Context, attrs: AttributeSet) : View(context, attrs)
         paint.style = Paint.Style.FILL
     }
 
-    // تنظیم تصویر بدون مقیاس‌بندی
     fun setBitmap(bitmap: Bitmap) {
         pendingBitmap = bitmap
         if (width > 0 && height > 0) {
-            applyBitmap(bitmap)  // بدون مقیاس‌بندی
+            applyBitmap(bitmap)
         }
     }
 
-    // حذف مقیاس‌بندی و استفاده از تصویر اصلی
     private fun applyBitmap(bitmap: Bitmap) {
-        val scaledBitmap = scaleBitmapToFitView(bitmap) // مقیاس‌بندی تصویر با حفظ نسبت
+        val scaledBitmap = scaleBitmapToFitView(bitmap)
         this.bitmap = scaledBitmap.copy(Bitmap.Config.ARGB_8888, true)
         this.originalBitmap = scaledBitmap.copy(Bitmap.Config.ARGB_8888, true)
         invalidate()
     }
 
-    // این متد زمانی که اندازه ویو تغییر می‌کند اجرا می‌شود
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         pendingBitmap?.let {
-            applyBitmap(it)  // تنظیم تصویر با مقیاس‌بندی
-            pendingBitmap = null  // بعد از بارگذاری تصویر دیگر نیازی به این عکس نیست
+            applyBitmap(it)
+            pendingBitmap = null
         }
     }
 
-    // تابعی برای تغییر رنگ انتخاب شده
     fun setColor(color: Int) {
         selectedColor = color
     }
 
-    // کشیدن تصویر در اندازه واقعی
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         bitmap?.let {
-            // کشیدن تصویر با حفظ تناسب
             canvas.drawBitmap(it, 0f, 0f, paint)
         }
     }
@@ -83,13 +77,11 @@ class ColoringView(context: Context, attrs: AttributeSet) : View(context, attrs)
         return true
     }
 
-    // تابعی برای تشخیص رنگ خطوط
     private fun isLineColor(pixelColor: Int): Boolean {
         val lineColor = Color.BLACK
         return pixelColor == lineColor
     }
 
-    // الگوریتم Flood Fill برای پر کردن ناحیه
     private fun floodFill(bitmap: Bitmap, x: Int, y: Int, newColor: Int) {
         val oldColor = bitmap.getPixel(x, y)
         if (oldColor == newColor) return
@@ -112,21 +104,25 @@ class ColoringView(context: Context, attrs: AttributeSet) : View(context, attrs)
         }
     }
 
-    // تابعی برای مقیاس‌بندی تصویر با حفظ تناسب
     private fun scaleBitmapToFitView(bitmap: Bitmap): Bitmap {
         val viewWidth = width
         val viewHeight = height
 
-        // محاسبه نسبت مقیاس برای تغییر اندازه تصویر
         val scaleWidth = viewWidth.toFloat() / bitmap.width.toFloat()
         val scaleHeight = viewHeight.toFloat() / bitmap.height.toFloat()
-        val scaleFactor = Math.min(scaleWidth, scaleHeight) // انتخاب مقیاس بهینه
+        val scaleFactor = Math.min(scaleWidth, scaleHeight)
 
-        // محاسبه اندازه جدید تصویر
         val newWidth = (bitmap.width * scaleFactor).toInt()
         val newHeight = (bitmap.height * scaleFactor).toInt()
-
-        // تغییر اندازه تصویر با حفظ نسبت
         return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
     }
+
+    //    del colors
+    fun deleteCanvas() {
+        originalBitmap?.let {
+            applyBitmap(it)
+        }
+    }
+
+
 }

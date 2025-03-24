@@ -1,10 +1,11 @@
 package com.mkarshnas6.karenstudio.kidscanvas
 
+import android.app.AlertDialog
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -41,6 +42,7 @@ class ImageActivity : AppCompatActivity() {
         }
 
         binding.btnSelectColor.setOnClickListener { openColorPicker() }
+        binding.btnDelete.setOnClickListener { deleteCanvas() }
         binding.btnEraser.setOnClickListener {
             if (EraserIsEnable == false) {
                 selectedColor = Color.WHITE
@@ -92,6 +94,27 @@ class ImageActivity : AppCompatActivity() {
 
             })
         colorPicker.show()
+    }
+
+    fun deleteCanvas() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.custom_dialog_layout, null)
+        builder.setView(dialogView)
+            .setCancelable(true)
+
+        val alertDialog = builder.create()
+        val btnYes: TextView = dialogView.findViewById(R.id.btn_yes)
+        val btnNo: TextView = dialogView.findViewById(R.id.btn_no)
+
+        btnYes.setOnClickListener {
+            binding.coloringView.deleteCanvas()
+            alertDialog.dismiss()
+        }
+        btnNo.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
     }
 
 }
