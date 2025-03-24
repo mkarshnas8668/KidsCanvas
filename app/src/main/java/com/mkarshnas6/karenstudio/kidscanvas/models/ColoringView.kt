@@ -47,6 +47,13 @@ class ColoringView(context: Context, attrs: AttributeSet) : View(context, attrs)
         }
     }
 
+    fun getBitmapFromView(view: View): Bitmap {
+        view.isDrawingCacheEnabled = true
+        val bitmap = Bitmap.createBitmap(view.drawingCache)
+        view.isDrawingCacheEnabled = false
+        return bitmap
+    }
+
     fun setColor(color: Int) {
         selectedColor = color
     }
