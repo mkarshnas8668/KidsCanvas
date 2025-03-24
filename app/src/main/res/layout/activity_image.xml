@@ -40,35 +40,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/btn_maines_zoom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="10dp"
-            android:background="@null"
-            android:gravity="center"
-            android:src="@drawable/ic_remove" />
-        <SeekBar
-            android:id="@+id/seekBarZoom"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:progressBackgroundTint="@color/light_gray"
-            android:progressTint="@color/black"
-            android:max="250"
-            android:progress="1" />
-
-        <ImageView
-            android:id="@+id/btn_add_zoom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginStart="10dp"
-            android:background="@null"
-            android:gravity="center"
-            android:src="@drawable/ic_add" />
-
 
         <ImageView
             android:id="@+id/btn_select_color"
