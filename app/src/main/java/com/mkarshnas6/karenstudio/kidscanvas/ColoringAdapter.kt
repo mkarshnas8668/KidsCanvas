@@ -28,8 +28,8 @@ class ColoringAdapter(private val imageList: List<ImageItem>, private val onClic
         // اگر می‌خواهید تصاویر را با توجه به نام انگلیسی بارگذاری کنید:
         val context = holder.itemView.context
         // برای مثال این کد می‌تواند تصویر مناسب را بر اساس نام انگلیسی بارگذاری کند
-        // val imageResId = context.resources.getIdentifier("img_${item.englishName}", "drawable", context.packageName)
-        // holder.imageView.setImageResource(imageResId)
+         val imageResId = context.resources.getIdentifier("img_${item.englishName}", "drawable", context.packageName)
+         holder.imageView.setImageResource(imageResId)
 
         holder.itemView.setOnClickListener {
             onClick(item)

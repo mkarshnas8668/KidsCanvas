@@ -1,8 +1,10 @@
 package com.mkarshnas6.karenstudio.kidscanvas
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mkarshnas6.karenstudio.kidscanvas.databinding.ActivityColoringBinding
 
@@ -12,6 +14,11 @@ class ColoringActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        ......... change color status bar and navigation mob ..............................
+        window.statusBarColor = ContextCompat.getColor(this, R.color.dark_green)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.dark_green)
+
 
         // Binding initialization
         binding = ActivityColoringBinding.inflate(layoutInflater)
@@ -27,7 +34,9 @@ class ColoringActivity : AppCompatActivity() {
 
         // Creating the adapter and setting onClick action
         val adapter = ColoringAdapter(imageList) { item ->
-            Toast.makeText(this, "Clicked on ${item.persianName}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ImageActivity::class.java)
+            intent.putExtra("image_name", item.englishName)
+            startActivity(intent)
         }
 
         // Setting the adapter to the RecyclerView
