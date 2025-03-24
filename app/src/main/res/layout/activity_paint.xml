@@ -42,6 +42,36 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:id="@+id/btn_maines_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:src="@drawable/ic_remove" />
+        <SeekBar
+            android:id="@+id/seekBarBrushSize"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:progressBackgroundTint="@color/light_gray"
+            android:progressTint="@color/black"
+            android:max="250"
+            android:progress="1" />
+
+        <ImageView
+            android:id="@+id/btn_add_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:src="@drawable/ic_add" />
+
+
+        <ImageView
             android:id="@+id/btn_select_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,31 +79,42 @@
             android:layout_marginStart="10dp"
             android:background="@null"
             android:gravity="center"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/ic_color" />
 
-        <TextView
-            android:id="@+id/btn_blue"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/btn_eraser"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#0000FF"
+            android:layout_marginStart="10dp"
+            android:background="@null"
             android:gravity="center"
-            android:text="آبی"
-            android:textColor="@color/white"
-            android:textSize="60px" />
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_eraser" />
 
-        <TextView
-            android:id="@+id/btn_green"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#00FF00"
+            android:layout_marginStart="10dp"
+            android:background="@null"
             android:gravity="center"
-            android:text="سبز"
-            android:textColor="@color/white"
-            android:textSize="60px" />
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_delete" />
+
+        <ImageView
+            android:id="@+id/btn_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_download" />
+
 
     </LinearLayout>
 

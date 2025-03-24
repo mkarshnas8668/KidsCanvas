@@ -65,8 +65,24 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         drawPaint.color = newColor
     }
 
+    fun setBrushSize(newSize:Float){
+        drawPaint.strokeWidth = newSize
+    }
+
+    fun getBrushSize():Float{
+        return drawPaint.strokeWidth
+    }
+
     fun clearCanvas() {
         canvasBitmap?.eraseColor(Color.TRANSPARENT)
         invalidate()
     }
+
+    fun getBitmapFromView(view: View): Bitmap {
+        view.isDrawingCacheEnabled = true
+        val bitmap = Bitmap.createBitmap(view.drawingCache)
+        view.isDrawingCacheEnabled = false
+        return bitmap
+    }
+
 }
