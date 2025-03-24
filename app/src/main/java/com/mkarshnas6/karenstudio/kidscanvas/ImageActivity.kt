@@ -2,6 +2,8 @@ package com.mkarshnas6.karenstudio.kidscanvas
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -39,10 +41,31 @@ class ImageActivity : AppCompatActivity() {
         }
 
         binding.btnSelectColor.setOnClickListener { openColorPicker() }
+        binding.btnEraser.setOnClickListener {
+            if (EraserIsEnable == false) {
+                selectedColor = Color.WHITE
+                coloringView.setColor(Color.WHITE)
+                EraserIsEnable = true
+                it.setBackgroundColor(getColor(R.color.light_green))
+            } else {
+                val previousColor =
+                    (binding.btnSelectColor.drawable as? ColorDrawable)?.color ?: Color.RED
+                selectedColor = previousColor
+                coloringView.setColor(previousColor)
+                binding.btnSelectColor.setColorFilter(selectedColor)
+                EraserIsEnable = false
+                it.setBackgroundColor(getColor(R.color.None))
+            }
+        }
     }
 
     private fun openColorPicker() {
         if (!::coloringView.isInitialized) return
+
+        if (EraserIsEnable) {
+            selectedColor = R.color.red
+            coloringView.setColor(R.color.red)
+        }
 
         val colorPicker =
             AmbilWarnaDialog(this, selectedColor, object : AmbilWarnaDialog.OnAmbilWarnaListener {
@@ -54,9 +77,17 @@ class ImageActivity : AppCompatActivity() {
                         coloringView.setColor(selectedColor)
                         binding.btnSelectColor.setColorFilter(color)
                     } else {
-                        Toast.makeText(this@ImageActivity, "لطفا از رنگ های مشابه استفاده کنید .", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@ImageActivity,
+                            "لطفا از رنگ های مشابه استفاده کنید .",
+                            Toast.LENGTH_LONG
+                        ).show()
                         openColorPicker()
                     }
+
+                    binding.btnEraser.setBackgroundColor(getColor(R.color.None))
+                    EraserIsEnable = false
+
                 }
 
             })
