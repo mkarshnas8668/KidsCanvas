@@ -69,11 +69,11 @@ class LearningActivity : AppCompatActivity() {
 
             if (EraserIsEnable){
                 binding.btnEraser.setBackgroundColor(getColor(R.color.None))
-                binding.coloringView.setColor(selectedColor)
+                binding.coloringView.setEraserMode(false)
                 EraserIsEnable = false
             }else{
                 binding.btnEraser.setBackgroundColor(getColor(R.color.light_green))
-                binding.coloringView.setColor(getColor(R.color.white))
+                binding.coloringView.setEraserMode(true)
                 EraserIsEnable = true
             }
 

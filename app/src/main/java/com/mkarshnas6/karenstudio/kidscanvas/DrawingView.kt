@@ -13,9 +13,11 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     private var canvasPaint: Paint = Paint(Paint.DITHER_FLAG)
     private var drawCanvas: Canvas? = null
     private var canvasBitmap: Bitmap? = null
+    private var eraserPaint: Paint = Paint()
 
     init {
         setupDrawing()
+        setupEraser()
     }
 
     private fun setupDrawing() {
@@ -25,6 +27,14 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         drawPaint.style = Paint.Style.STROKE
         drawPaint.strokeJoin = Paint.Join.ROUND
         drawPaint.strokeCap = Paint.Cap.ROUND
+    }
+
+    private fun setupEraser() {
+        eraserPaint.isAntiAlias = true
+        eraserPaint.strokeWidth = 30f
+        eraserPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+        eraserPaint.strokeJoin = Paint.Join.ROUND
+        eraserPaint.strokeCap = Paint.Cap.ROUND
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldW: Int, oldH: Int) {
@@ -47,11 +57,9 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
             MotionEvent.ACTION_DOWN -> {
                 drawPath.moveTo(touchX, touchY)
             }
-
             MotionEvent.ACTION_MOVE -> {
                 drawPath.lineTo(touchX, touchY)
             }
-
             MotionEvent.ACTION_UP -> {
                 drawCanvas?.drawPath(drawPath, drawPaint)
                 drawPath.reset()
@@ -65,17 +73,26 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         drawPaint.color = newColor
     }
 
-    fun setBrushSize(newSize:Float){
+    fun setBrushSize(newSize: Float) {
         drawPaint.strokeWidth = newSize
     }
 
-    fun getBrushSize():Float{
+    fun getBrushSize(): Float {
         return drawPaint.strokeWidth
     }
 
     fun clearCanvas() {
         canvasBitmap?.eraseColor(Color.TRANSPARENT)
         invalidate()
+    }
+
+    fun setEraserMode(enabled: Boolean) {
+        if (enabled) {
+            drawPaint = eraserPaint
+        } else {
+            drawPaint = Paint()
+            setupDrawing()
+        }
     }
 
     fun getBitmapFromView(view: View): Bitmap {
