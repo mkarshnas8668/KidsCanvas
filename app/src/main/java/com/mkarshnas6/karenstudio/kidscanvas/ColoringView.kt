@@ -1,4 +1,4 @@
-package com.mkarshnas6.karenstudio.kidscanvas.models
+package com.mkarshnas6.karenstudio.kidscanvas
 
 import android.content.Context
 import android.graphics.Bitmap

@@ -69,4 +69,27 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/btn_learning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/back_btn_menu"
+        android:drawableRight="@drawable/ic_brush"
+        android:drawableTint="@color/dark_green"
+        android:fontFamily="@font/sans_fa_name_bold"
+        android:gravity="center"
+        android:minHeight="70dp"
+        android:paddingStart="15dp"
+        android:text="با هم بکشیم"
+        android:textColor="@color/green"
+        android:textSize="60px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

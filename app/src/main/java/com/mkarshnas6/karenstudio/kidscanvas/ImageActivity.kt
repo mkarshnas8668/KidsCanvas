@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.mkarshnas6.karenstudio.kidscanvas.databinding.ActivityImageBinding
-import com.mkarshnas6.karenstudio.kidscanvas.models.ColoringView
 import yuku.ambilwarna.AmbilWarnaDialog
 
 class ImageActivity : AppCompatActivity() {

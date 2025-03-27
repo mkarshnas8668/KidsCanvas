@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnColoring.setOnClickListener { startActivity(Intent(this,ColoringActivity::class.java)) }
         binding.btnPainting.setOnClickListener { startActivity(Intent(this,PaintActivity::class.java)) }
+        binding.btnLearning.setOnClickListener { startActivity(Intent(this,SelecteLearningActivity::class.java)) }
 
     }
 }

@@ -19,12 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.mkarshnas6.karenstudio.kidscanvas.ColoringView
+        <ImageView
+            android:id="@+id/imgLearn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.4"
+            app:srcCompat="@drawable/img_batman1" />
+
+        <com.mkarshnas6.karenstudio.kidscanvas.DrawingView
             android:id="@+id/coloring_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:scrollbarStyle="insideInset" />
+
 
     </FrameLayout>
 
@@ -39,6 +47,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_maines_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:src="@drawable/ic_remove" />
+        <SeekBar
+            android:id="@+id/seekBarBrushSize"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:progressBackgroundTint="@color/light_gray"
+            android:progressTint="@color/black"
+            android:max="250"
+            android:progress="1" />
+
+        <ImageView
+            android:id="@+id/btn_add_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:gravity="center"
+            android:src="@drawable/ic_add" />
 
 
         <ImageView
