@@ -52,5 +52,6 @@ dependencies {
 
 //    ........... My ..........................
     implementation("com.github.yukuku:ambilwarna:2.0.1")
+    implementation("androidx.cardview:cardview:1.0.0")
 
 }

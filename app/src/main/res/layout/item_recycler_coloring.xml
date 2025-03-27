@@ -1,20 +1,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
     android:background="@drawable/back_btn_menu"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:layout_margin="4dp">
+    android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/img_paint"
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="50dp"
+        app:cardElevation="4dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/back_img_cericel"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_batman1"
-        android:clipToOutline="true"/>
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:id="@+id/img_paint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/back_img_cericel"
+            android:src="@drawable/img_captainamerica2" />
+    </androidx.cardview.widget.CardView>
 
 
     <TextView
