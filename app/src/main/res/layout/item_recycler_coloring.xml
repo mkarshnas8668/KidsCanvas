@@ -13,7 +13,8 @@
         android:layout_height="100dp"
         android:background="@drawable/back_img_cericel"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_batman1" />
+        android:src="@drawable/img_batman1"
+        android:clipToOutline="true"/>
 
 
     <TextView
