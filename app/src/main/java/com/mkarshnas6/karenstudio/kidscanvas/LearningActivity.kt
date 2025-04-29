@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.adivery.sdk.Adivery
 import com.mkarshnas6.karenstudio.kidscanvas.databinding.ActivityLearningBinding
 import yuku.ambilwarna.AmbilWarnaDialog
 
@@ -29,6 +30,14 @@ class LearningActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLearningBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        show ADS
+
+        Adivery.configure(application, "1d85f173-8ff4-45a2-9bee-650334225883")
+        Adivery.prepareRewardedAd(this, "3ba93732-6c38-4fc4-a908-10e71fe651e2")
+
+
+//        end show ADS
 
         val imageName = intent.getStringExtra("image_name")
         if (imageName != null) {
@@ -51,8 +60,15 @@ class LearningActivity : AppCompatActivity() {
         binding.btnMainesSize.setOnClickListener { binding.seekBarBrushSize.progress -= 2 }
 
         binding.btnDownload.setOnClickListener {
-            val bitmap = binding.coloringView.getBitmapFromView(binding.coloringView)
-            saveImageToGallery(bitmap)
+            if (Adivery.isLoaded("3ba93732-6c38-4fc4-a908-10e71fe651e2")) {
+                Toast.makeText(this, "مجبوریم ❤❤", Toast.LENGTH_SHORT).show()
+                Adivery.showAd("3ba93732-6c38-4fc4-a908-10e71fe651e2")
+                val bitmap = binding.coloringView.getBitmapFromView(binding.coloringView)
+                saveImageToGallery(bitmap)
+            }else{
+                Toast.makeText(this, "ببخشید ولی تا زمانی که تبلیغات نبینید نمی توانید ذخیره کنید 💔💔", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         binding.seekBarBrushSize.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {

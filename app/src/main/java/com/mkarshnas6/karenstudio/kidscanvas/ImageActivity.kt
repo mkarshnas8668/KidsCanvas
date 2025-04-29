@@ -9,10 +9,13 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.adivery.sdk.Adivery
+import com.adivery.sdk.AdiveryAdListener
 import com.mkarshnas6.karenstudio.kidscanvas.databinding.ActivityImageBinding
 import yuku.ambilwarna.AmbilWarnaDialog
 
@@ -22,11 +25,39 @@ class ImageActivity : AppCompatActivity() {
     private var selectedColor: Int = Color.RED
     private lateinit var coloringView: ColoringView
     private var EraserIsEnable: Boolean = false
+    private var lastPauseTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        show ads
+
+        Adivery.configure(application, "1d85f173-8ff4-45a2-9bee-650334225883")
+        Adivery.prepareRewardedAd(this, "fa0dbb19-3450-47fa-bc71-a16ce86565d0")
+        Adivery.setLoggingEnabled(true)
+
+        val bannerAd_bottom = binding.bannerAdBottomColoring1
+
+        //        banner bottom
+        bannerAd_bottom.setBannerAdListener(object : AdiveryAdListener() {
+            override fun onError(reason: String) {
+                Log.e("adivary", "${reason}")
+            }
+
+            override fun onAdClicked() {
+                Toast.makeText(
+                    this@ImageActivity,
+                    "خیلی ممنون که کلیک کردی ❤ :)",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+
+        bannerAd_bottom.loadAd()
+//        end show ads
+
 
         coloringView = findViewById(R.id.coloring_view)
         binding.btnSelectColor.setColorFilter(Color.RED)
@@ -44,11 +75,19 @@ class ImageActivity : AppCompatActivity() {
             }
         }
 
+
         binding.btnSelectColor.setOnClickListener { openColorPicker() }
         binding.btnDelete.setOnClickListener { deleteCanvas() }
         binding.btnDownload.setOnClickListener {
-            val bitmap = binding.coloringView.getBitmapFromView(binding.coloringView)
-            saveImageToGallery(bitmap)
+            if (Adivery.isLoaded("fa0dbb19-3450-47fa-bc71-a16ce86565d0")) {
+                Toast.makeText(this, "مجبوریم ❤❤", Toast.LENGTH_SHORT).show()
+                Adivery.showAd("fa0dbb19-3450-47fa-bc71-a16ce86565d0")
+                val bitmap = binding.coloringView.getBitmapFromView(binding.coloringView)
+                saveImageToGallery(bitmap)
+            }else{
+                Toast.makeText(this, "ببخشید ولی تا زمانی که تبلیغات نبینید نمی توانید ذخیره کنید 💔💔", Toast.LENGTH_SHORT).show()
+            }
+
         }
         binding.btnEraser.setOnClickListener {
             if (EraserIsEnable == false) {
@@ -175,5 +214,6 @@ private fun saveImageToGallery(bitmap: Bitmap) {
         }
         alertDialog.show()
     }
+
 
 }

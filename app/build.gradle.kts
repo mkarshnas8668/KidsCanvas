@@ -15,8 +15,8 @@ android {
         applicationId = "com.mkarshnas6.karenstudio.kidscanvas"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,5 +53,6 @@ dependencies {
 //    ........... My ..........................
     implementation("com.github.yukuku:ambilwarna:2.0.1")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.adivery:sdk:4.8.3")
 
 }

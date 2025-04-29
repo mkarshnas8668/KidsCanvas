@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
     android:background="@color/back_ic"
+    android:layoutDirection="rtl"
     tools:context=".MainActivity">
 
 
@@ -14,12 +14,25 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="fitXY"
         app:srcCompat="@drawable/img_back_menu" />
+
+    <com.adivery.sdk.AdiveryBannerAdView
+        android:id="@+id/banner_ad_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        app:banner_size="medium_rectangle"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.01999998"
+        app:placement_id="508d71ec-8733-41f2-9601-ccb534b78afe" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -91,5 +104,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.adivery.sdk.AdiveryBannerAdView
+        android:id="@+id/banner_ad_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:banner_size="medium_rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_learning"
+        app:layout_constraintVertical_bias="0.51"
+        app:placement_id="8dea3b5f-df9d-4b81-935f-9ba56ce9373a" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

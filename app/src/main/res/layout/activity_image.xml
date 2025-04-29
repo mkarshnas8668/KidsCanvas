@@ -26,7 +26,21 @@
             android:layout_gravity="center"
             android:scrollbarStyle="insideInset" />
 
+
     </FrameLayout>
+
+    <com.adivery.sdk.AdiveryBannerAdView
+        android:id="@+id/banner_ad_bottom_coloring1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:banner_size="smart_banner"
+        app:layout_constraintBottom_toBottomOf="@+id/frame_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97"
+        app:placement_id="26984f89-2623-4b76-9a60-129cba2b269b" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"

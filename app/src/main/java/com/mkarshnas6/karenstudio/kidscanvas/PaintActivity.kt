@@ -8,12 +8,15 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.adivery.sdk.Adivery
+import com.adivery.sdk.AdiveryListener
 import com.mkarshnas6.karenstudio.kidscanvas.databinding.ActivityPaintBinding
 import yuku.ambilwarna.AmbilWarnaDialog
 
@@ -21,12 +24,21 @@ class PaintActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPaintBinding
     private var selectedColor: Int = Color.BLACK
-    private var EraserIsEnable:Boolean = false
+    private var EraserIsEnable: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPaintBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//      show ad
+
+        Adivery.configure(application, "1d85f173-8ff4-45a2-9bee-650334225883")
+        Adivery.prepareRewardedAd(this, "cfe6ee2e-cb8b-4739-8938-ae5d9737903e")
+        Adivery.setLoggingEnabled(true)
+
+//        end show ad
+
 
 //        ......... change color ..............................
         window.statusBarColor = ContextCompat.getColor(this, R.color.dark_green)
@@ -41,11 +53,19 @@ class PaintActivity : AppCompatActivity() {
         binding.btnMainesSize.setOnClickListener { binding.seekBarBrushSize.progress -= 2 }
 
         binding.btnDownload.setOnClickListener {
-            val bitmap = binding.coloringView.getBitmapFromView(binding.coloringView)
-            saveImageToGallery(bitmap)
+            if (Adivery.isLoaded("cfe6ee2e-cb8b-4739-8938-ae5d9737903e")) {
+                Toast.makeText(this, "مجبوریم ❤❤", Toast.LENGTH_SHORT).show()
+                Adivery.showAd("cfe6ee2e-cb8b-4739-8938-ae5d9737903e")
+                val bitmap = binding.coloringView.getBitmapFromView(binding.coloringView)
+                saveImageToGallery(bitmap)
+            }else{
+                Toast.makeText(this, "ببخشید ولی تا زمانی که تبلیغات نبینید نمی توانید ذخیره کنید 💔💔", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
-        binding.seekBarBrushSize.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.seekBarBrushSize.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.coloringView.setBrushSize(progress.toFloat())
             }
@@ -57,11 +77,11 @@ class PaintActivity : AppCompatActivity() {
 
         binding.btnEraser.setOnClickListener {
 
-            if (EraserIsEnable){
+            if (EraserIsEnable) {
                 binding.btnEraser.setBackgroundColor(getColor(R.color.None))
                 binding.coloringView.setColor(selectedColor)
                 EraserIsEnable = false
-            }else{
+            } else {
                 binding.btnEraser.setBackgroundColor(getColor(R.color.light_green))
                 binding.coloringView.setColor(getColor(R.color.white))
                 EraserIsEnable = true
@@ -87,7 +107,10 @@ class PaintActivity : AppCompatActivity() {
 
             val imageCollection = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
             val contentValues = ContentValues().apply {
-                put(MediaStore.Images.Media.DISPLAY_NAME, "drawing_${System.currentTimeMillis()}.png")
+                put(
+                    MediaStore.Images.Media.DISPLAY_NAME,
+                    "drawing_${System.currentTimeMillis()}.png"
+                )
                 put(MediaStore.Images.Media.MIME_TYPE, "image/png")
                 put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
             }
@@ -103,7 +126,8 @@ class PaintActivity : AppCompatActivity() {
                         Toast.makeText(this, "خطا در باز کردن خروجی.", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(this, "خطا در ذخیره تصویر: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "خطا در ذخیره تصویر: ${e.message}", Toast.LENGTH_SHORT)
+                        .show()
                 }
             } ?: run {
                 Toast.makeText(this, "خطا در ایجاد تصویر URI.", Toast.LENGTH_SHORT).show()
